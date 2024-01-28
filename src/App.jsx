@@ -7,10 +7,8 @@ function App() {
   return (
     <>
       <Header />
-      {/* <div className="bg bg-no-repeat object-cover"> */}
       <Slider />
       <Production />
-      {/* </div> */}
     </>
   );
 }

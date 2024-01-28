@@ -1,29 +1,26 @@
 import React, { useEffect, useRef, useState } from "react";
-import axios from "axios";
 import { HiChevronLeft, HiChevronRight } from "react-icons/hi2";
+import getTrendingVideos from "../api/Api";
 
 function Slider() {
   const screenWidth = window.innerWidth;
   const [movie, setMovie] = useState([]);
-  const baseUrl = "https://api.themoviedb.org/3";
-  const apiKey = "baf057f3579501246838cd16ae8ff728";
   const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/original/";
+
   useEffect(() => {
     api();
   }, []);
+
   const api = async () => {
-    console.log("api");
-    await axios
-      .get(`${baseUrl}/trending/movie/day?api_key=${apiKey}`)
-      .then((res) => setMovie(() => res.data.results));
+    await getTrendingVideos.then((res) => setMovie(() => res.data.results));
   };
+
   const slideRef = useRef();
 
   const slideRight = (element) => {
     element.scrollLeft += screenWidth - 110;
   };
   const slideLeft = (element) => {
-    console.log("clicked left button");
     element.scrollLeft -= screenWidth - 110;
   };
 
